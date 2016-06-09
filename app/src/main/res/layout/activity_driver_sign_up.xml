@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtDriveReq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Driver Registration Form"
+            android:textColor="#836dfd"
+            android:textSize="20dp"
+            android:textStyle="bold|italic" />
+
+        <ImageView
+            android:id="@+id/Photo"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_below="@+id/txtDriveReq"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/signup_male" />
+
+        <TextView
+            android:id="@+id/lblDriverID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtDriveReq"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/Photo"
+            android:text="Driver ID: "
+            android:textColor="#7B66F0"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtDriverID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtDriveReq"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/lblDriverID"
+            android:text="Null"
+            android:textColor="#7B66F0"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/lblName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lblDriverID"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/Photo"
+            android:text="Name: "
+            android:textColor="#7B66F0"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtDriverID"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/lblName"
+            android:text="Null"
+            android:textColor="#7B66F0"
+            android:textSize="15dp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </RelativeLayout>
+
+
+
+        <Button
+            android:id="@+id/expandableButton2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Photo"
+            android:background="#8734b4"
+            android:drawableRight="@android:drawable/arrow_down_float"
+            android:onClick="expandableButton2"
+            android:paddingRight="10dp"
+            android:text="Requirements"
+            android:textColor="#fff"
+            android:textStyle="bold" />
+
+        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+            android:id="@+id/expandableLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/expandableButton2"
+            android:padding="16dp"
+            app:ael_duration="400"
+            app:ael_expanded="false"
+            app:ael_orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/lblLicenseNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:text="License Number: "
+                    android:textColor="#7B66F0"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/tbLicenseNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@id/lblLicenseNo"
+                    android:hint="License Number"
+                    android:paddingLeft="5dp"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/lblLicenseExpiry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lblLicenseNo"
+                    android:layout_marginTop="40dp"
+                    android:text="License Expiry: "
+                    android:textColor="#7B66F0"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/tbLicenseExpiry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tbLicenseNo"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@id/lblLicenseNo"
+                    android:hint="MM-DD-YYYY"
+                    android:paddingLeft="5dp"
+                    android:textSize="15dp"
+                    android:onClick="clickexpiry"/>
+
+                <TextView
+                    android:id="@+id/lblLicensePhoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lblLicenseExpiry"
+                    android:layout_marginTop="40dp"
+                    android:text="License Photo: "
+                    android:textColor="#7B66F0"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/licensePhoto"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_below="@id/lblLicenseExpiry"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@id/lblLicenseNo"
+                    android:onClick="clicklicense"/>
+
+                <TextView
+                    android:id="@+id/lblRequirements"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/licensePhoto"
+                    android:layout_marginTop="15dp"
+                    android:text="Driver Requirements "
+                    android:textColor="#7B66F0"
+                    android:textSize="20dp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:id="@+id/lblDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lblRequirements"
+                    android:text="Upload an image of your requirements "
+                    android:textColor="#7B66F0"
+                    android:textSize="12dp" />
+
+                <CheckBox
+                    android:id="@+id/LangProf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lblRequirements"
+                    android:layout_marginTop="20dp"
+                    android:clickable="false"
+                    android:enabled="false"
+                    android:text="Language Proficiency"
+                    android:textColor="#7B66F0"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <CheckBox
+                    android:id="@+id/NBI"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/LangProf"
+                    android:layout_marginTop="10dp"
+                    android:clickable="false"
+                    android:enabled="false"
+                    android:text="NBI Clearance"
+                    android:textColor="#7B66F0"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imgNBI"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_below="@id/NBI"
+                    android:layout_marginLeft="10dp"
+                    android:scaleType="fitXY"
+                    android:onClick="clicknbi"/>
+
+                <CheckBox
+                    android:id="@+id/PNP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/LangProf"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/NBI"
+                    android:clickable="false"
+                    android:enabled="false"
+                    android:text="PNP Clearance"
+                    android:textColor="#7B66F0"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imgPNP"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_below="@+id/PNP"
+                    android:layout_marginLeft="80dp"
+                    android:layout_toRightOf="@+id/NBI"
+                    android:onClick="clickpnp"/>
+
+                <CheckBox
+                    android:id="@+id/Insurance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imgNBI"
+                    android:layout_marginTop="10dp"
+                    android:clickable="false"
+                    android:enabled="false"
+                    android:text="Insurance"
+                    android:textColor="#7B66F0"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imgInsurance"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_below="@id/Insurance"
+                    android:layout_marginLeft="10dp"
+                    android:onClick="clickinsurance"/>
+
+                <CheckBox
+                    android:id="@+id/OR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imgPNP"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/NBI"
+                    android:clickable="false"
+                    android:enabled="false"
+                    android:text="OR"
+                    android:textColor="#7B66F0"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imgOR"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_below="@+id/OR"
+                    android:layout_marginLeft="80dp"
+                    android:layout_toRightOf="@+id/NBI"
+                    android:onClick="clickor"/>
+
+                <CheckBox
+                    android:id="@+id/CR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imgInsurance"
+                    android:layout_marginTop="10dp"
+                    android:clickable="false"
+                    android:enabled="false"
+                    android:text="CR"
+                    android:textColor="#7B66F0"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imgCR"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_below="@+id/CR"
+                    android:layout_marginLeft="10dp"
+                    android:onClick="clickcr"/>
+
+
+                <TextView
+                    android:id="@+id/Accredit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imgCR"
+                    android:layout_marginTop="30dp"
+                    android:text="Accreditation Status: "
+                    android:textColor="#7B66F0"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/statusAcc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imgCR"
+                    android:layout_marginTop="29dp"
+                    android:layout_toRightOf="@+id/Accredit"
+                    android:text="        New"
+                    android:textColor="#FF4949"
+                    android:textSize="18dp"
+                    android:textStyle="bold|italic" />
+
+            </RelativeLayout>
+        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+        <Button
+            android:id="@+id/expandableButton3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/expandableLayout2"
+            android:background="#bf6cf7"
+            android:drawableRight="@android:drawable/arrow_down_float"
+            android:onClick="expandableButton3"
+            android:paddingRight="10dp"
+            android:text="Alternate Driver"
+            android:textColor="#fff"
+            android:textStyle="bold" />
+
+        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+            android:id="@+id/expandableLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/expandableButton3"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            app:ael_duration="400"
+            app:ael_expanded="false"
+            app:ael_orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/txtAlterDriver"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:hint="Alternate Driver Email Address" />
+
+                <EditText
+                    android:id="@+id/txtAlterDriverID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtAlterDriver"
+                    android:layout_marginTop="15dp"
+                    android:hint="Driver ID" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@id/txtAlterDriverID"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Request Driver ID? "/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Click here."
+                        android:onClick="request_driver_id"
+                        android:id="@+id/clickhere"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+
+        <Button
+            android:id="@+id/expandableButton4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/expandableLayout3"
+            android:background="#7f38b6"
+            android:drawableRight="@android:drawable/arrow_down_float"
+            android:onClick="expandableButton4"
+            android:paddingRight="10dp"
+            android:text="Vehicle"
+            android:textColor="#fff"
+            android:textStyle="bold" />
+
+        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+            android:id="@+id/expandableLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/expandableButton4"
+            android:padding="16dp"
+            app:ael_duration="400"
+            app:ael_expanded="false"
+            app:ael_interpolator="bounce"
+            app:ael_orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/body_type_container">
+
+
+                    <Spinner
+                        android:layout_below="@+id/body_type_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="54dp"
+                        android:id="@+id/body_type"
+                        android:entries="@array/body_type"
+                        android:prompt="@string/body_type_header"
+                        android:inputType="textCapSentences" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/make_container"
+                    android:layout_below="@+id/body_type_container">
+
+
+                    <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="54dp"
+                        android:id="@+id/make"
+                        android:entries="@array/make"
+                        android:prompt="@string/make_header"
+                        android:inputType="textCapSentences"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/year_container"
+                    android:layout_below="@+id/make_container">
+
+
+                    <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="54dp"
+                        android:id="@+id/year"
+                        android:entries="@array/year"
+                        android:prompt="@string/year_header"
+                        android:inputType="textCapSentences"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/fuel_type_container"
+                    android:layout_below="@+id/vehicle_color_container">
+
+
+                    <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="54dp"
+                        android:id="@+id/fuel_type"
+                        android:entries="@array/fuel_type"
+                        android:prompt="@string/year_header"
+                        android:inputType="textCapSentences"/>
+
+                </LinearLayout>
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/model"
+                    android:hint="Model"
+                    />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/vehicle_color"
+                    android:hint="Color" />
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="Engine Number"
+                    android:id="@+id/engine"
+                    android:layout_below="@+id/year_container"/>
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="Chassis Number"
+                    android:id="@+id/chassis" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="Plate Number"
+                    android:id="@+id/plate_number"
+                    android:layout_below="@+id/year_container"/>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Engine Image"
+                        android:id="@+id/engine_img_text"
+                        android:layout_gravity="right"
+                        android:paddingRight="100dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chassis Image"
+                        android:id="@+id/chassis_img_text" />
+
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="-10dp">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/blank"
+                        android:layout_marginRight="87dp"
+                        android:onClick="clickengine"
+                        android:id="@+id/engineimage"/>
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/blank"
+                        android:layout_gravity="center"
+                        android:onClick="clickchassis"
+                        android:id="@+id/chassisimage"/>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:orientation="horizontal">
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Photo Exterior - Front"
+                        android:id="@+id/Photo_Ext_Front"
+                        android:layout_marginRight="50dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Photo Exterior - Back"
+                        android:id="@+id/Photo_Ext_Back" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="-20dp">
+
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/blank"
+                        android:layout_marginRight="87dp"
+                        android:onClick="photoexteriorfront"
+                        android:id="@+id/photoexteriorfront"/>
+
+
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/blank"
+                        android:onClick="photoexteriorback"
+                        android:id="@+id/photoexteriorback"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Photo Exterior - Right"
+                        android:id="@+id/Photo_Ext_Right"
+                        android:layout_marginRight="50dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Photo Exterior - Left"
+                        android:id="@+id/Photo_Ext_Left" />
+
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="-20dp">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/blank"
+                        android:layout_marginRight="87dp"
+                        android:onClick="photoexteriorright"
+                        android:id="@+id/photoexteriorright"/>
+
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/blank"
+                        android:onClick="photoexteriorleft"
+                        android:id="@+id/photoexteriorleft"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Photo Interior - Front"
+                        android:id="@+id/Photo_Int_Front"
+                        android:layout_marginRight="50dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="  Photo Interior - Back"
+                        android:id="@+id/Photo_Int_Back"
+                        android:paddingRight="11dp"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="-20dp">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/blank"
+                        android:layout_marginRight="87dp"
+                        android:onClick="photointeriorfront"
+                        android:id="@+id/photointeriorfront"/>
+
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/blank"
+                        android:onClick="photointeriorback"
+                        android:id="@+id/photointeriorback"/>
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="         "/>
+            </LinearLayout>
+
+        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/expandableLayout4"
+            android:layout_marginTop="10dp"
+            android:background="#6955DC"
+            android:onClick="addAccount"
+            android:text="SIGN-UP"
+            android:textColor="#ffffff"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/email"
+            android:text="username"
+            android:layout_below="@+id/lblName"
+            android:layout_alignRight="@+id/txtName"
+            android:layout_alignEnd="@+id/txtName"
+            android:layout_marginTop="29dp"
+            android:visibility="invisible"/>
+
+    </RelativeLayout>
+</ScrollView>

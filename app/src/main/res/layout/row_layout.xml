@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="75dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text="Net Lima"
+        android:id="@+id/pickup"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text="Bacoor Cavite"
+        android:id="@+id/dropoff"
+        android:layout_below="@+id/pickup"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="2016-05-10"
+        android:id="@+id/date"
+        android:layout_below="@+id/dropoff"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="5:00 pm"
+        android:id="@+id/time"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/date"
+        android:layout_below="@+id/dropoff"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_horizontal_margin"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.example.jivenlanstabien.projecthitch1.Login.sign_up">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_FName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/tbFname"
+                android:hint="First Name"
+                android:singleLine="true"
+                android:layout_alignParentRight="true"
+                tools:ignore="HardcodedText" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_MName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/tbFname"
+                android:id="@+id/tbMname"
+                android:hint="Middle Name"
+                android:singleLine="true"
+                android:layout_alignParentRight="true"
+                tools:ignore="HardcodedText" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_LName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/tbMname"
+                android:id="@+id/tbLname"
+                android:hint="Last Name"
+                android:singleLine="true"
+                android:layout_alignParentRight="true"
+                tools:ignore="HardcodedText" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_EmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/spnGender"
+                android:id="@+id/tbEmail"
+                android:inputType="textEmailAddress"
+                android:hint="Email Address"
+                android:singleLine="true"
+                android:layout_alignParentRight="true"
+                tools:ignore="HardcodedText" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_ReemailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/tbEmail"
+                android:id="@+id/tbEmailAgain"
+                android:inputType="textEmailAddress"
+                android:hint="Re-Enter Email Address"
+                android:singleLine="true"
+                android:layout_alignParentRight="true"
+                tools:ignore="HardcodedText" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_Password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/tbEmailAgain"
+                android:id="@+id/tbPassword"
+                android:hint="Password"
+                android:singleLine="true"
+                android:inputType="textPassword"
+                android:layout_alignParentRight="true"
+                tools:ignore="HardcodedText" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_RePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/tbPassword"
+                android:id="@+id/tbPasswordAgain"
+                android:hint="Re-Enter Password"
+                android:singleLine="true"
+                android:inputType="textPassword"
+                android:layout_alignParentRight="true"
+                tools:ignore="HardcodedText" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_Birthdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/tbLname"
+                android:id="@+id/tbBirthdate"
+                android:hint="Date of Birth"
+                android:onClick="setBDate"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="10dp"
+                android:background="@color/login_color" />
+        </android.support.design.widget.TextInputLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+            <TextView
+                android:id="@+id/genderlbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/gender"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Gender"
+                android:id="@+id/spnGender"
+                android:layout_toRightOf="@+id/genderlbl"
+                android:entries="@array/gender"/>
+        </RelativeLayout>
+        <Button
+            android:id="@+id/Signup"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/login_color"
+            android:text="@string/sign_up"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+</ScrollView>

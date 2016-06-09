@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_below="@+id/PassReq"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/picture"
+            android:id="@+id/Photo"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Passenger ID: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:layout_below="@+id/PassReq"
+            android:layout_toRightOf="@+id/Photo"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/PassengerID"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Null"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:layout_below="@+id/PassReq"
+            android:layout_toRightOf="@+id/PassengerID"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="60dp"
+            android:id="@+id/txtpass"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:layout_below="@+id/PassengerID"
+            android:layout_toRightOf="@+id/Photo"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/Name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/Name"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/PassengerID"
+            android:layout_marginTop="15dp"
+            android:text="Null"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:id="@+id/txtName"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date of Birth: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:layout_below="@+id/Photo"
+            android:layout_toRightOf="@+id/Photo"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/BirthDate"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/BirthDate"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/Photo"
+            android:layout_marginTop="15dp"
+            android:text="Null"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:id="@+id/txtBirthDate"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:layout_below="@+id/Photo"
+            android:layout_marginTop="15dp"
+            android:id="@+id/Gender"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/Gender"
+            android:layout_below="@id/Photo"
+            android:layout_marginTop="15dp"
+            android:text="Null"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:id="@+id/txtGender"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Marital Status: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:layout_marginTop="35dp"
+            android:layout_below="@+id/Gender"
+            android:id="@+id/MaritalStats"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_toRightOf="@id/MaritalStats"
+            android:layout_marginTop="20dp"
+            android:id="@+id/maritalstatus"
+            android:entries="@array/maritalstat"
+            android:layout_below="@+id/Gender"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address 1: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:layout_below="@+id/MaritalStats"
+            android:layout_marginTop="25dp"
+            android:id="@+id/Address1"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/Address1"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/MaritalStats"
+            android:layout_marginTop="15dp"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:id="@+id/txtAddress1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address 2: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:layout_below="@+id/Address1"
+            android:layout_marginTop="35dp"
+            android:id="@+id/Address2"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/Address2"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/txtAddress1"
+            android:layout_marginTop="15dp"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:id="@+id/txtAddress2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="City: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:layout_below="@+id/Address2"
+            android:layout_marginTop="35dp"
+            android:id="@+id/City"/>
+
+        <EditText
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/City"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/Address2"
+            android:layout_marginTop="25dp"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:id="@+id/txtCity"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Country: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:layout_below="@+id/Address2"
+            android:layout_toRightOf="@+id/txtCity"
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/Country"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/Country"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/txtAddress2"
+            android:layout_marginTop="13dp"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:id="@+id/txtCountry"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact Number: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:layout_below="@+id/City"
+            android:layout_marginTop="35dp"
+            android:id="@+id/ContactNumber"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/ContactNumber"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/City"
+            android:layout_marginTop="25dp"
+            android:inputType="number"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:id="@+id/txtContactNumber"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alternate Contact Number: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:layout_below="@+id/ContactNumber"
+            android:layout_marginTop="35dp"
+            android:id="@+id/AlterContactNumber"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/AlterContactNumber"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/ContactNumber"
+            android:layout_marginTop="25dp"
+            android:textSize="15dp"
+            android:inputType="number"
+            android:textColor="#51ABD7"
+            android:id="@+id/txtAlterContactNumber"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Emergency Contact Person: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:layout_below="@+id/AlterContactNumber"
+            android:layout_marginTop="35dp"
+            android:id="@+id/EmergeContact"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/EmergeContact"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/AlterContactNumber"
+            android:layout_marginTop="25dp"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:id="@+id/txtEmergeContact"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Emergency Contact Number: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:layout_below="@+id/EmergeContact"
+            android:layout_marginTop="35dp"
+            android:id="@+id/EmergeContactNo"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/EmergeContactNo"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/EmergeContact"
+            android:layout_marginTop="25dp"
+            android:textSize="15dp"
+            android:inputType="number"
+            android:textColor="#51ABD7"
+            android:id="@+id/txtEmergeContactNo"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Passenger Type: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:layout_below="@+id/EmergeContactNo"
+            android:layout_marginTop="35dp"
+            android:id="@+id/PassengerType"/>
+
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Emergency Contact Number: "
+            android:textStyle="bold"
+            android:entries="@array/passengertype"
+            android:textSize="15dp"
+            android:layout_below="@+id/EmergeContactNo"
+            android:layout_toRightOf="@+id/PassengerType"
+            android:layout_marginTop="25dp"
+            android:id="@+id/Passenger_type_spinner"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID Number: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:layout_below="@+id/PassengerType"
+            android:layout_marginTop="35dp"
+            android:id="@+id/IDnumbertext"/>
+
+        <EditText
+            android:id="@+id/discountid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/PassengerType"
+            android:layout_toRightOf="@id/IDnumbertext"
+            android:layout_marginTop="25dp"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="School: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:layout_below="@+id/IDnumbertext"
+            android:layout_marginTop="35dp"
+            android:id="@+id/schooltext"/>
+
+        <EditText
+            android:id="@+id/school"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/IDnumbertext"
+            android:layout_toRightOf="@id/schooltext"
+            android:layout_marginTop="25dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Save"
+            android:layout_below="@+id/schooltext"
+            android:layout_marginTop="20dp"
+            android:id="@+id/buttonsave"
+            android:onClick="save"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="          "
+            android:textSize="40dp"
+            android:id="@+id/blank"
+            android:layout_below="@id/buttonsave"/>
+
+
+    </RelativeLayout>
+</ScrollView>

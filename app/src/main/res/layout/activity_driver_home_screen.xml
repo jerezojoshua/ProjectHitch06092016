@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="50dp">
+
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_below="@+id/txtDriveReq"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/signup_male"
+            android:id="@+id/Photo"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Driver ID: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/txtDriveReq"
+            android:layout_toRightOf="@+id/Photo"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/lblDriverID"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Null"
+            android:textSize="15dp"
+            android:layout_below="@+id/txtDriveReq"
+            android:layout_toRightOf="@+id/lblDriverID"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/txtDriverID"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/lblDriverID"
+            android:layout_toRightOf="@+id/Photo"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/lblName"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/lblName"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/txtDriverID"
+            android:layout_marginTop="15dp"
+            android:text="Null"
+            android:textSize="15dp"
+            android:id="@+id/txtName"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/lblName"
+            android:layout_toRightOf="@+id/Photo"
+            android:layout_marginTop="45dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/lblGender"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/lblName"
+            android:layout_marginLeft="15dp"
+            android:layout_below="@id/lblName"
+            android:layout_marginTop="45dp"
+            android:text="Null"
+            android:textSize="15dp"
+            android:id="@+id/txtGender"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date of Birth: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/Photo"
+            android:layout_marginTop="20dp"
+            android:id="@+id/lblBirthdate"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/lblBirthdate"
+            android:layout_marginLeft="15dp"
+            android:layout_below="@id/Photo"
+            android:layout_marginTop="20dp"
+            android:text="Null"
+            android:textSize="15dp"
+            android:id="@+id/txtBirthdate"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Marital Status: "
+            android:textStyle="bold"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/lblBirthdate"
+            android:layout_marginTop="25dp"
+            android:id="@+id/lblMaritalStats"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_toRightOf="@id/lblMaritalStats"
+            android:layout_below="@+id/lblBirthdate"
+            android:layout_marginTop="5dp"
+            android:id="@+id/spnMaritalStats"
+            android:entries="@array/maritalstat"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address 1: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/lblMaritalStats"
+            android:layout_marginTop="25dp"
+            android:id="@+id/lblAddress1"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/lblAddress1"
+            android:layout_marginLeft="10dp"
+            android:singleLine="true"
+            android:layout_below="@id/lblMaritalStats"
+            android:layout_marginTop="15dp"
+            android:hint="Address 1"
+            android:textSize="15dp"
+            android:id="@+id/txtAddress1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address 2: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/lblAddress1"
+            android:layout_marginTop="35dp"
+            android:id="@+id/lblAddress2"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/lblAddress2"
+            android:layout_marginLeft="10dp"
+            android:singleLine="true"
+            android:layout_below="@id/txtAddress1"
+            android:layout_marginTop="15dp"
+            android:hint="Address 2"
+            android:textSize="15dp"
+            android:id="@+id/txtAddress2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="City: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/lblAddress2"
+            android:layout_marginTop="35dp"
+            android:id="@+id/lblCity"/>
+
+        <EditText
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/lblCity"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/lblAddress2"
+            android:layout_marginTop="25dp"
+            android:hint="City"
+            android:textSize="15dp"
+            android:singleLine="true"
+            android:id="@+id/txtCity"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Country: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/lblAddress2"
+            android:layout_toRightOf="@+id/txtCity"
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/lblCountry"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/lblCountry"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/txtAddress2"
+            android:layout_marginTop="13dp"
+            android:hint="Country"
+            android:singleLine="true"
+            android:textSize="15dp"
+            android:id="@+id/txtCountry"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact Number: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/lblCity"
+            android:layout_marginTop="35dp"
+            android:id="@+id/lblContactNumber"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/lblContactNumber"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/lblCity"
+            android:layout_marginTop="25dp"
+            android:hint="Contact Number"
+            android:textSize="15dp"
+            android:id="@+id/txtContactNumber"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alternate Contact Number: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/lblContactNumber"
+            android:layout_marginTop="35dp"
+            android:id="@+id/lblAlterContactNumber"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/lblAlterContactNumber"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/lblContactNumber"
+            android:layout_marginTop="25dp"
+            android:textSize="15dp"
+            android:id="@+id/txtAlterContactNumber"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Emergency Contact Person: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/lblAlterContactNumber"
+            android:layout_marginTop="35dp"
+            android:id="@+id/lblEmergeContact"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/lblEmergeContact"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/lblAlterContactNumber"
+            android:layout_marginTop="25dp"
+            android:textSize="15dp"
+            android:singleLine="true"
+            android:id="@+id/txtEmergeContact"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Emergency Contact Number: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/lblEmergeContact"
+            android:layout_marginTop="35dp"
+            android:id="@+id/lblEmergeContactNo"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/lblEmergeContactNo"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/lblEmergeContact"
+            android:layout_marginTop="25dp"
+            android:textSize="15dp"
+            android:id="@+id/txtEmergeContactNo"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:id="@+id/save"
+            android:layout_below="@id/txtEmergeContactNo"
+            android:onClick="save"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="       "
+            android:textSize="50dp"
+            android:layout_below="@id/save"/>
+    </RelativeLayout>
+</ScrollView>

@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/upper">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Passenger Registration Form"
+            android:textStyle="bold|italic"
+            android:textSize="20dp"
+            android:textColor="#51ABD7"
+            android:layout_marginTop="10dp"
+            android:id="@+id/PassReq"/>
+
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_below="@+id/PassReq"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/picture"
+            android:id="@+id/Photo"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Passenger ID: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:layout_below="@+id/PassReq"
+            android:layout_toRightOf="@+id/Photo"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/PassengerID"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Null"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:layout_below="@+id/PassReq"
+            android:layout_toRightOf="@+id/PassengerID"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="60dp"
+            android:id="@+id/txtpass"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:layout_below="@+id/PassengerID"
+            android:layout_toRightOf="@+id/Photo"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/Name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/Name"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/PassengerID"
+            android:layout_marginTop="15dp"
+            android:text="Null"
+            android:textSize="15dp"
+            android:textColor="#51ABD7"
+            android:id="@+id/txtName"/>
+
+
+
+
+
+
+
+        <Button
+            android:id="@+id/expandableButton2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Photo"
+            android:background="#51ABD7"
+            android:drawableRight="@android:drawable/arrow_down_float"
+            android:onClick="expandableButton2"
+            android:paddingRight="10dp"
+            android:text="Passenger Profile"
+            android:textColor="#fff" />
+
+        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+            android:id="@+id/expandableLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/expandableButton2"
+            android:padding="16dp"
+            app:ael_duration="400"
+            app:ael_expanded="false"
+            app:ael_interpolator="bounce"
+            app:ael_orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal">
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/passengertype_container">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Passenger Type:  "
+                        android:textStyle="bold"
+                        android:textSize="15dp"
+                        android:textColor="#51ABD7" />
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="15dp"
+                        android:entries="@array/passengertype"
+                        android:id="@+id/passenger_type"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/passengertype_container"
+                    android:id="@+id/school_container">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="School:  "
+                        android:textStyle="bold"
+                        android:textSize="15dp"
+                        android:textColor="#51ABD7" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/school"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/school_container"
+                    android:id="@+id/id_container">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ID Number:  "
+                        android:textStyle="bold"
+                        android:textSize="15dp"
+                        android:textColor="#51ABD7" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/idnumber"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Passenger Preference: "
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:textColor="#51ABD7"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/passenger_preference"
+                    android:layout_below="@+id/id_container"/>
+
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:entries="@array/Passenger_Preference"
+                    android:layout_toRightOf="@+id/passenger_preference"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/passenger_preference_spinner"
+                    android:layout_below="@+id/id_container"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Prefered Seat: "
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:textColor="#51ABD7"
+                    android:layout_below="@+id/passenger_preference"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/prefered_seat_text"/>
+
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:entries="@array/Passenger_Seats"
+                    android:layout_below="@+id/passenger_preference"
+                    android:layout_toRightOf="@+id/prefered_seat_text"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/prefered_seat"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tracking: "
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:textColor="#51ABD7"
+                    android:layout_below="@+id/prefered_seat"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/tracking_text"/>
+
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:entries="@array/Passenger_Track"
+                    android:layout_below="@+id/prefered_seat"
+                    android:layout_toRightOf="@+id/tracking_text"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/tracking"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pickup: "
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:textColor="#51ABD7"
+                    android:layout_below="@+id/tracking_text"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/txtPickUp"/>
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tracking"
+                    android:layout_toRightOf="@+id/txtPickUp"
+                    android:id="@+id/pickup"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dropoff: "
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:textColor="#51ABD7"
+                    android:layout_below="@+id/txtPickUp"
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/txtDropOff"/>
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pickup"
+                    android:layout_toRightOf="@+id/txtDropOff"
+                    android:id="@+id/dropoff"
+                    />
+
+
+            </RelativeLayout>
+        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+
+        <Button
+            android:id="@+id/expandableButton3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/expandableLayout2"
+            android:background="#51ABD7"
+            android:drawableRight="@android:drawable/arrow_down_float"
+            android:onClick="expandableButton3"
+            android:paddingRight="10dp"
+            android:text="Passenger Payment"
+            android:textColor="#fff" />
+
+        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+            android:id="@+id/expandableLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/expandableLayout2"
+            android:padding="16dp"
+            app:ael_duration="400"
+            app:ael_expanded="false"
+            app:ael_interpolator="bounce"
+            app:ael_orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="50dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/payment"
+                            android:layout_marginTop="8dp"
+                            android:textSize="15dp"
+                            android:textColor="#51ABD7"
+                            android:text="Payment Type:" />
+
+                        <Spinner
+                            android:id="@+id/spinner1"
+                            android:entries="@array/Payment_Type"
+                            android:prompt="@string/payment_prompt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_horizontal" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:textSize="15dp"
+                            android:textColor="#51ABD7"
+                            android:text="Issuing Bank:" />
+
+
+                        <EditText
+                            android:id="@+id/Bank"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="15dp"
+                            android:layout_below="@+id/passengerid"
+                            android:layout_gravity="center_horizontal"
+                            />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15dp"
+                            android:textColor="#51ABD7"
+                            android:text="Account Name:" />
+
+
+                        <EditText
+                            android:id="@+id/accountname"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="15dp"
+                            />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15dp"
+                            android:textColor="#51ABD7"
+                            android:text="Card Number:  " />
+
+
+                        <EditText
+                            android:id="@+id/Card"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:textSize="15dp"
+                            />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15dp"
+                            android:textColor="#51ABD7"
+                            android:text="Expiry Date:  " />
+
+
+                        <EditText
+                            android:id="@+id/Expiry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="15dp"
+                            android:inputType="date"
+                            android:layout_below="@+id/Card"
+                            />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15dp"
+                            android:textColor="#51ABD7"
+                            android:text="Security Code:  " />
+
+                        <EditText
+                            android:id="@+id/Code"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="15dp"
+                            android:inputType="number"
+                            />
+
+
+                    </LinearLayout>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Scan Credit Card"
+                        android:id="@+id/scan"
+                        android:onClick="onScanPress"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/resultTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.95"
+                        android:text=""/>
+                </LinearLayout>
+            </RelativeLayout>
+        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="submit"
+            android:text="Submit"
+            android:background="#51ABD7"
+            android:textColor="#ffffff"
+            android:layout_marginTop="55dp"
+            android:layout_below="@+id/expandableLayout3"
+            android:id="@+id/submit"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/submit"
+            android:text="     "/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="username"
+            android:id="@+id/pass_email"
+            android:visibility="invisible"
+            android:layout_above="@+id/expandableButton1"
+            android:layout_alignRight="@+id/txtName"
+            android:layout_alignEnd="@+id/txtName" />
+
+    </RelativeLayout>
+
+</ScrollView>

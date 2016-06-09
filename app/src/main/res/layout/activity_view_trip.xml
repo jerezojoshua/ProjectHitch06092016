@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:layout_marginTop="10dp"
+    tools:context="com.example.jivenlanstabien.projecthitch1.ViewTrip">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/linearLayout1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trip ID" />
+
+            <EditText
+                android:id="@+id/etTRID"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:enabled="false" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_toRightOf="@+id/linearLayout1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Schedule ID" />
+
+            <EditText
+                android:id="@+id/etSID"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:enabled="false"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_below="@+id/linearLayout1"
+            android:id="@+id/linearLayout2">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Driver ID" />
+
+            <EditText
+                android:id="@+id/etDID"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:enabled="false"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_toRightOf="@+id/linearLayout2"
+            android:layout_below="@+id/linearLayout1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vehicle ID" />
+            <EditText
+                android:id="@+id/etVID"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:enabled="false"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_below="@+id/linearLayout2"
+            android:id="@+id/linearLayout3">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pick-Up" />
+
+            <EditText
+                android:id="@+id/etPUP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Drop-Off" />
+
+            <EditText
+                android:id="@+id/etDOFF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date" />
+
+            <EditText
+                android:id="@+id/etDATE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time" />
+
+            <EditText
+                android:id="@+id/etTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="C"
+                    android:textSize="9dp"
+                    android:textStyle="bold"
+                    android:id="@+id/btnConfirm1"/>
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:textSize="9dp"
+                    android:text="B"
+                    android:textStyle="bold"
+                    android:id="@+id/btnBoarded1"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Seat 1(Front-Right):"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Available"
+                    android:id="@+id/tvseat1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:textSize="9dp"
+                    android:textStyle="bold"
+                    android:text="C"
+                    android:id="@+id/btnConfirm2"/>
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:textSize="9dp"
+                    android:textStyle="bold"
+                    android:text="B"
+                    android:id="@+id/btnBoarded2"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Seat 2(Middle-Left):"
+
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Available"
+                    android:id="@+id/tvseat2"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:textSize="9dp"
+                    android:textStyle="bold"
+                    android:text="c"
+                    android:id="@+id/btnConfirm3"/>
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:textSize="9dp"
+                    android:textStyle="bold"
+                    android:text="b"
+                    android:id="@+id/btnBoarded3"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Seat 3(Middle-Center):"
+
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Available"
+                    android:id="@+id/tvseat3"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:textSize="9dp"
+                    android:textStyle="bold"
+                    android:text="c"
+                    android:id="@+id/btnConfirm4"/>
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:textSize="9dp"
+                    android:textStyle="bold"
+                    android:text="b"
+                    android:id="@+id/btnBoarded4"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Seat 4(Middle-Right):"
+
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Available"
+                    android:id="@+id/tvseat4"/>
+            </LinearLayout>
+
+            <!--LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Seat 5(Back-Left):"
+                    android:layout_marginRight="5dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Available"
+                    android:id="@+id/tvseat5"/>
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:textSize="8dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="confirm"
+                    android:id="@+id/btnConfirm5"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Seat 6(Back-Center):"
+                    android:layout_marginRight="5dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Available"
+                    android:id="@+id/tvseat6"/>
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:textSize="8dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="confirm"
+                    android:id="@+id/btnConfirm6"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Seat 7(Back-Right):"
+                    android:layout_marginRight="5dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Available"
+                    android:id="@+id/tvseat7"/>
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:textSize="8dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="confirm"
+                    android:id="@+id/btnConfirm7"/>
+            </LinearLayout>-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total Price: 0"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/etStatus"
+                android:enabled="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_below="@+id/linearLayout3"
+            android:id="@+id/linearLayout4">
+            <Button
+                android:id="@+id/btnIn"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:text="In Transit" />
+
+            <Button
+                android:id="@+id/btnReady"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:text="Ready for Pick-up" />
+
+            <Button
+                android:id="@+id/btnScan"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:text="scan"/>
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:text="Start Trip"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Update Trip"
+            android:layout_below="@+id/linearLayout4"/>
+    </RelativeLayout>
+</ScrollView>

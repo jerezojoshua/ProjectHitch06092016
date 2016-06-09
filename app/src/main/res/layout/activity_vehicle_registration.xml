@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".vehicle_registration">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <Spinner
+                android:layout_below="@+id/body_type_text"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:id="@+id/body_type"
+                android:entries="@array/body_type"
+                android:prompt="@string/body_type_header"
+                android:inputType="textCapSentences" />
+
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:id="@+id/make"
+                android:entries="@array/make"
+                android:prompt="@string/make_header"
+                android:inputType="textCapSentences"/>
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:id="@+id/year"
+                android:entries="@array/year"
+                android:prompt="@string/year_header"
+                android:inputType="textCapSentences"/>
+
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:id="@+id/fuel_type"
+                android:entries="@array/fuel_type"
+                android:prompt="@string/year_header"
+                android:inputType="textCapSentences"/>
+
+        </LinearLayout>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:id="@+id/model"
+            android:hint="Model"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:id="@+id/vehicle_color"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Color"
+            android:layout_marginTop="10dp"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center"
+            android:hint="Engine Number"
+            android:id="@+id/engine"
+            android:layout_below="@+id/year_container"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center"
+            android:hint="Chassis Number"
+            android:id="@+id/chassis" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Plate Number"
+            android:id="@+id/plate_number"
+            android:layout_below="@+id/year_container"/>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Engine Image"
+                android:id="@+id/engine_img_text"
+                android:layout_gravity="right"
+                android:layout_marginLeft="10dp"
+                android:paddingRight="100dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chassis Image"
+                android:id="@+id/chassis_img_text" />
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="100dp"
+                android:src="@drawable/blank"
+                android:layout_marginRight="50dp"/>
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="100dp"
+                android:src="@drawable/blank"
+                android:layout_gravity="center" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Photo Exterior - Front"
+                android:id="@+id/Photo_Ext_Front"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Photo Exterior - Back"
+                android:id="@+id/Photo_Ext_Back"
+                android:layout_marginTop="10dp"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="100dp"
+                android:src="@drawable/blank"
+                android:layout_marginRight="50dp" />
+
+
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="100dp"
+                android:src="@drawable/blank" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Photo Exterior - Right"
+                android:id="@+id/Photo_Ext_Right"
+
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="50dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Photo Exterior - Left"
+                android:id="@+id/Photo_Ext_Left"
+                android:layout_marginTop="10dp"/>
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="100dp"
+                android:src="@drawable/blank"
+                android:layout_marginRight="50dp"/>
+
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="100dp"
+                android:src="@drawable/blank"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Photo Interior - Front"
+                android:id="@+id/Photo_Int_Front"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Photo Interior - Back"
+                android:id="@+id/Photo_Int_Back"
+                android:layout_marginTop="10dp"
+                android:paddingRight="11dp"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/last_layout">
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="100dp"
+                android:src="@drawable/blank"
+                android:layout_marginRight="50dp"/>
+
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="100dp"
+                android:src="@drawable/blank" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/last_layout">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/driver_color"
+                android:id="@+id/add_vehicle"
+                android:text="ADD VEHICLE"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                android:textColor="@color/white"
+                android:layout_alignParentRight="true"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

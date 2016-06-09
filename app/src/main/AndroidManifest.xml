@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.jivenlanstabien.projecthitch1">
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
+    <meta-data
+        android:name="com.google.android.gms.vision.DEPENDENCIES"
+        android:value="barcode" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-library android:name="com.google.android.maps" />
+
+    <activity
+        android:name="io.card.payment.CardIOActivity"
+        android:configChanges="keyboardHidden|orientation"
+        android:hardwareAccelerated="true" />
+    <activity
+        android:name="io.card.payment.DataEntryActivity"
+        android:screenOrientation="portrait" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/splash"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCrRW1AaMllHuxJwD4Tm8wOTwRbufIiiFw"/>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+
+        <activity android:name=".Login.splash_screen">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.MAIN"
+                    android:theme="@style/AppTheme" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".driver_registration_form"
+            android:label="@string/driver"
+            android:theme="@style/Driver" />
+        <activity
+            android:name=".QRReader"
+            android:label="@string/driver"
+            android:theme="@style/Driver" />
+        <activity
+            android:name=".Login.Login"
+            android:label="Angkas"
+            android:theme="@style/Login" />
+
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+
+        <activity
+            android:name=".Passenger.home_screen"
+            android:label="Angkas"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Passenger.home_screen_registration"
+            android:label="Angkas"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Login.forgot_password"
+            android:label="Forgot Password"
+            android:theme="@style/Login" />
+
+        <activity
+            android:name=".Login.SecurityCodeChecking"
+            android:label="Security Code"
+            android:theme="@style/Login" />
+        <activity
+            android:name=".Login.sign_up"
+            android:label="Sign Up"
+            android:theme="@style/Login" />
+        <activity
+            android:name=".vehicle_registration"
+            android:label="Vehicle"
+            android:theme="@style/Driver" />
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".driver_sign_up"
+            android:label="@string/driver"
+            android:theme="@style/Driver" />
+        <activity
+            android:name=".Passenger.booking_schedule"
+            android:label="Booking"
+            android:theme="@style/Passenger" />
+        <activity
+            android:name=".Passenger.booking_selection"
+            android:label="Booking"
+            android:theme="@style/Passenger" />
+        <activity
+            android:name=".vehicle_seats_availability"
+            android:label="@string/driver"
+            android:theme="@style/Driver" />
+        <!--
+            <activity
+            android:name=".DriverScheduleList"
+            android:label="@string/driver"
+            android:theme="@style/Driver" />
+        -->
+        <activity
+            android:name=".driver_home_screen"
+            android:label="Personal Information"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".driver_profile"
+            android:label="Driver Profile"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".driver_requirements"
+            android:label="Driver Requirements"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".DriverScheduleList"
+            android:label="Driver Schedule"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".DriverTripList"
+            android:label="Trips"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".vehicle_records"
+            android:label="Vehicle"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Passenger.passenger_home_screen"
+            android:label="Personal Information"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Passenger.passenger_booking"
+            android:label="Booking"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Passenger.passenger_registration"
+            android:label="Passenger Registration"
+            android:supportsRtl="true"
+            android:theme="@style/Passenger" />
+        <activity
+            android:name=".AddSchedule"
+            android:label="Add Schedule"
+            android:theme="@style/Driver" />
+        <activity android:name=".ViewSchedule" />
+        <activity android:name=".ViewTrip"
+            android:label="View Trip"
+            android:theme="@style/Driver" />
+        <activity android:name=".Passenger.PassengerViewTripList" />
+        <activity android:name=".EmergencyContacts"></activity>
+    </application>
+
+</manifest>

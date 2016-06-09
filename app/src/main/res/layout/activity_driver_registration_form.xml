@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".driver_registration_form">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Driver License Registration Form "
+            android:textStyle="bold|italic"
+            android:textSize="20dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/txtDriveReq"
+            android:layout_toRightOf="@+id/Photo"
+            android:layout_marginTop="30dp"
+            android:id="@+id/lblLicenseRegForm"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Driver ID: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/lblLicenseRegForm"
+            android:layout_toRightOf="@+id/Photo"
+            android:layout_marginTop="30dp"
+            android:id="@+id/lblDriverID"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Null"
+            android:textSize="15dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/lblLicenseRegForm"
+            android:layout_toRightOf="@+id/lblDriverID"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:id="@+id/txtDriverID"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/lblDriverID"
+            android:layout_toRightOf="@+id/Photo"
+            android:layout_marginTop="20dp"
+            android:id="@+id/lblName"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/lblName"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/txtDriverID"
+            android:layout_marginTop="20dp"
+            android:text="Null"
+            android:textSize="15dp"
+            android:textColor="#7B66F0"
+            android:id="@+id/txtName"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="License Number: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/txtName"
+            android:layout_marginTop="25dp"
+            android:id="@+id/lblLicenseNo"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@id/lblLicenseNo"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/txtName"
+            android:layout_marginTop="15dp"
+            android:hint="License Number"
+            android:textSize="15dp"
+            android:paddingLeft="5dp"
+            android:id="@+id/tbLicenseNo"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="License Expiry: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/lblLicenseNo"
+            android:layout_marginTop="40dp"
+            android:id="@+id/lblLicenseExpiry"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/lblLicenseNo"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/tbLicenseNo"
+            android:layout_marginTop="15dp"
+            android:hint="License Expiry"
+            android:textSize="15dp"
+            android:paddingLeft="5dp"
+            android:id="@+id/tbLicenseExpiry"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="License Photo: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/lblLicenseExpiry"
+            android:layout_marginTop="40dp"
+            android:id="@+id/lblLicensePhoto"/>
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_toRightOf="@id/lblLicenseNo"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/lblLicenseExpiry"
+            android:layout_marginTop="15dp"
+            android:id="@+id/licensePhoto"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Driver Requirements "
+            android:textStyle="bold|italic"
+            android:textSize="20dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/licensePhoto"
+            android:layout_toRightOf="@+id/Photo"
+            android:layout_marginTop="15dp"
+            android:id="@+id/lblRequirements"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload an image of your requirements "
+            android:textSize="12dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/lblRequirements"
+            android:layout_toRightOf="@+id/Photo"
+            android:id="@+id/lblDesc"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/lblRequirements"
+            android:layout_marginTop="20dp"
+            android:text="Language Proficiency"
+            android:textColor="#7B66F0"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:enabled="false"
+            android:clickable="false"
+            android:id="@+id/LangProf"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/LangProf"
+            android:layout_marginTop="10dp"
+            android:text="NBI Clearance"
+            android:textColor="#7B66F0"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:enabled="false"
+            android:clickable="false"
+            android:id="@+id/NBI"/>
+
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/NBI"
+            android:id="@+id/imgNBI"
+            android:scaleType="fitXY"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/LangProf"
+            android:layout_toRightOf="@+id/NBI"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="70dp"
+            android:text="PNP Clearance"
+            android:textColor="#7B66F0"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:enabled="false"
+            android:clickable="false"
+            android:id="@+id/PNP"/>
+
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_below="@+id/PNP"
+            android:layout_toRightOf="@+id/NBI"
+            android:layout_marginLeft="80dp"
+            android:id="@+id/imgPNP"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/imgNBI"
+            android:layout_marginTop="10dp"
+            android:text="Insurance"
+            android:textColor="#7B66F0"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:enabled="false"
+            android:clickable="false"
+            android:id="@+id/Insurance"/>
+
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/Insurance"
+            android:id="@+id/imgInsurance"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/imgPNP"
+            android:layout_toRightOf="@+id/NBI"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="70dp"
+            android:text="OR"
+            android:textColor="#7B66F0"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:enabled="false"
+            android:clickable="false"
+            android:id="@+id/OR"/>
+
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_below="@+id/OR"
+            android:layout_toRightOf="@+id/NBI"
+            android:layout_marginLeft="80dp"
+            android:id="@+id/imgOR"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/imgInsurance"
+            android:layout_marginTop="10dp"
+            android:text="CR"
+            android:textColor="#7B66F0"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:enabled="false"
+            android:clickable="false"
+            android:id="@+id/CR"/>
+
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@+id/CR"
+            android:id="@+id/imgCR"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Accreditation Status: "
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="#7B66F0"
+            android:layout_below="@+id/imgCR"
+            android:layout_marginTop="30dp"
+            android:id="@+id/Accredit"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="        New"
+            android:textStyle="bold|italic"
+            android:textSize="18dp"
+            android:textColor="#FF4949"
+            android:layout_toRightOf="@+id/Accredit"
+            android:layout_below="@+id/imgCR"
+            android:layout_marginTop="29dp"
+            android:id="@+id/statusAcc"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Accredit"
+            android:text="SignUp"
+            android:onClick="addDriver"/>
+
+    </RelativeLayout>
+</ScrollView>
