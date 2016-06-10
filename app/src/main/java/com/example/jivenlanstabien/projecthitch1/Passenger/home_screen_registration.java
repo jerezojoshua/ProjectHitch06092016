@@ -92,6 +92,9 @@ public class home_screen_registration extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen_registration_navigation_menu);
+        SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+        username = sharedPreferences.getString("email_login", "");
+        getJSON();
         new BackgroundTask().execute();
 
         imageView = (ImageView) findViewById(R.id.Photo);
@@ -364,6 +367,10 @@ public class home_screen_registration extends AppCompatActivity
 
                     SharedPreferences settings = getSharedPreferences("login", MODE_PRIVATE);
                     settings.edit().clear().commit();
+                    SharedPreferences settings2 = getSharedPreferences("driver", MODE_PRIVATE);
+                    settings2.edit().clear().commit();
+                    SharedPreferences settings3 = getSharedPreferences("passenger", MODE_PRIVATE);
+                    settings3.edit().clear().commit();
                     Toast.makeText(home_screen_registration.this, "Successfully Logged Out!", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(home_screen_registration.this, Login.class);
                     startActivity(intent);

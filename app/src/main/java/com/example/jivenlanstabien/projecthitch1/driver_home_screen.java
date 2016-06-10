@@ -289,6 +289,10 @@ public class driver_home_screen extends AppCompatActivity
 
                     SharedPreferences settings = getSharedPreferences("login", MODE_PRIVATE);
                     settings.edit().clear().commit();
+                    SharedPreferences settings2 = getSharedPreferences("driver", MODE_PRIVATE);
+                    settings2.edit().clear().commit();
+                    SharedPreferences settings3 = getSharedPreferences("passenger", MODE_PRIVATE);
+                    settings3.edit().clear().commit();
                     Toast.makeText(driver_home_screen.this, "Successfully Logged Out!", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(driver_home_screen.this, Login.class);
                     startActivity(intent);

@@ -358,6 +358,10 @@ public class passenger_booking extends AppCompatActivity implements NavigationVi
 
                     SharedPreferences settings = getSharedPreferences("login", MODE_PRIVATE);
                     settings.edit().clear().commit();
+                    SharedPreferences settings2 = getSharedPreferences("driver", MODE_PRIVATE);
+                    settings2.edit().clear().commit();
+                    SharedPreferences settings3 = getSharedPreferences("passenger", MODE_PRIVATE);
+                    settings3.edit().clear().commit();
                     Toast.makeText(passenger_booking.this, "Successfully Logged Out!", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(passenger_booking.this, Login.class);
                     startActivity(intent);

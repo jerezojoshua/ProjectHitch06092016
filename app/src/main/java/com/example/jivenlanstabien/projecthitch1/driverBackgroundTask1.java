@@ -1,16 +1,16 @@
 package com.example.jivenlanstabien.projecthitch1;
 
-/**
- * Created by JivenlansTabien on 5/10/2016.
- */
-import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -24,7 +24,6 @@ import java.net.URLEncoder;
 public class driverBackgroundTask1 extends AsyncTask<String, Void, String>
 {
     Context ctx;
-    private ProgressDialog dialog;
     driverBackgroundTask1(Context ctx)
     {
         this.ctx = ctx;
@@ -70,6 +69,7 @@ public class driverBackgroundTask1 extends AsyncTask<String, Void, String>
 
             // end of declaration of params
 
+
             try
             {
                 URL url = new URL(reg_url);
@@ -96,22 +96,26 @@ public class driverBackgroundTask1 extends AsyncTask<String, Void, String>
                 bufferedWriter.flush();
                 bufferedWriter.close();
                 OS.close();
+
                 InputStream IS = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(IS, "iso-8859-1"));
+                String response = "";
+                String line = "";
+
+                while ((line = bufferedReader.readLine()) != null) {
+                    response += line;
+                }
+                bufferedReader.close();
                 IS.close();
-                return "Registration Success";
-            }
-            catch (MalformedURLException e)
-            {
+                httpURLConnection.disconnect();
+                return response;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-            catch (IOException e)
-            {
-                e.printStackTrace();
-            }
-
-
-
         }
+
         return null;
     }
 
@@ -123,6 +127,11 @@ public class driverBackgroundTask1 extends AsyncTask<String, Void, String>
     @Override
     protected void onPostExecute(String result)
     {
-        Toast.makeText(ctx,result,Toast.LENGTH_LONG).show();
+        String result1 = result.toString().trim();
+        SharedPreferences driversharedPreferences = ctx.getSharedPreferences("driver", ctx.MODE_PRIVATE);
+        SharedPreferences.Editor editor = driversharedPreferences.edit();
+        editor.putString("driverid", result1);
+        editor.commit();
+        Toast.makeText(ctx, "Registered as Driver",Toast.LENGTH_LONG).show();
     }
 }

@@ -233,6 +233,10 @@ public class DriverTripList extends AppCompatActivity
 
                     SharedPreferences settings = getSharedPreferences("login", MODE_PRIVATE);
                     settings.edit().clear().commit();
+                    SharedPreferences settings2 = getSharedPreferences("driver", MODE_PRIVATE);
+                    settings2.edit().clear().commit();
+                    SharedPreferences settings3 = getSharedPreferences("passenger", MODE_PRIVATE);
+                    settings3.edit().clear().commit();
                     Toast.makeText(DriverTripList.this, "Successfully Logged Out!", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(DriverTripList.this, Login.class);
                     startActivity(intent);
