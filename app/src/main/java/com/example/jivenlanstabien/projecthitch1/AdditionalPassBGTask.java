@@ -13,7 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-//JOSHUA Jerezo
+//JOSHUA Jerezo POGI
 /**
  * Created by Eugene on 6/1/2016.
  */
