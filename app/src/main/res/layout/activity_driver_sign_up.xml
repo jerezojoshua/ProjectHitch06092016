@@ -214,14 +214,12 @@
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
-                <CheckBox
+                <TextView
                     android:id="@+id/NBI"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/LangProf"
                     android:layout_marginTop="10dp"
-                    android:clickable="false"
-                    android:enabled="false"
                     android:text="NBI Clearance"
                     android:textColor="#7B66F0"
                     android:textSize="15dp"
@@ -236,7 +234,7 @@
                     android:scaleType="fitXY"
                     android:onClick="clicknbi"/>
 
-                <CheckBox
+                <TextView
                     android:id="@+id/PNP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -244,8 +242,6 @@
                     android:layout_marginLeft="70dp"
                     android:layout_marginTop="10dp"
                     android:layout_toRightOf="@+id/NBI"
-                    android:clickable="false"
-                    android:enabled="false"
                     android:text="PNP Clearance"
                     android:textColor="#7B66F0"
                     android:textSize="15dp"
@@ -258,16 +254,14 @@
                     android:layout_below="@+id/PNP"
                     android:layout_marginLeft="80dp"
                     android:layout_toRightOf="@+id/NBI"
-                    android:onClick="clickpnp"/>
+                    android:onClick="clickpnp" />
 
-                <CheckBox
+                <TextView
                     android:id="@+id/Insurance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/imgNBI"
                     android:layout_marginTop="10dp"
-                    android:clickable="false"
-                    android:enabled="false"
                     android:text="Insurance"
                     android:textColor="#7B66F0"
                     android:textSize="15dp"
@@ -281,7 +275,7 @@
                     android:layout_marginLeft="10dp"
                     android:onClick="clickinsurance"/>
 
-                <CheckBox
+                <TextView
                     android:id="@+id/OR"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -289,8 +283,6 @@
                     android:layout_marginLeft="70dp"
                     android:layout_marginTop="10dp"
                     android:layout_toRightOf="@+id/NBI"
-                    android:clickable="false"
-                    android:enabled="false"
                     android:text="OR"
                     android:textColor="#7B66F0"
                     android:textSize="15dp"
@@ -305,14 +297,12 @@
                     android:layout_toRightOf="@+id/NBI"
                     android:onClick="clickor"/>
 
-                <CheckBox
+                <TextView
                     android:id="@+id/CR"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/imgInsurance"
                     android:layout_marginTop="10dp"
-                    android:clickable="false"
-                    android:enabled="false"
                     android:text="CR"
                     android:textColor="#7B66F0"
                     android:textSize="15dp"

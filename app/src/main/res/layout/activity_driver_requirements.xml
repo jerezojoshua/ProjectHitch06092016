@@ -8,8 +8,8 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:layout_marginTop="50dp">
 
 
@@ -133,9 +133,11 @@
             android:textSize="15dp"
             android:enabled="false"
             android:clickable="false"
-            android:id="@+id/LangProf"/>
+            android:id="@+id/LangProf"
+            android:checked="false"
+            android:allowUndo="false" />
 
-        <CheckBox
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/LangProf"
@@ -144,9 +146,7 @@
             android:textColor="#7B66F0"
             android:textStyle="bold"
             android:textSize="15dp"
-            android:enabled="false"
-            android:clickable="false"
-            android:id="@+id/NBI"/>
+            android:id="@+id/NBI" />
 
         <ImageButton
             android:layout_width="80dp"
@@ -156,7 +156,7 @@
             android:id="@+id/imgNBI"
             android:scaleType="fitXY"/>
 
-        <CheckBox
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/LangProf"
@@ -167,8 +167,6 @@
             android:textColor="#7B66F0"
             android:textStyle="bold"
             android:textSize="15dp"
-            android:enabled="false"
-            android:clickable="false"
             android:id="@+id/PNP"/>
 
         <ImageButton
@@ -179,7 +177,7 @@
             android:layout_marginLeft="80dp"
             android:id="@+id/imgPNP"/>
 
-        <CheckBox
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imgNBI"
@@ -188,8 +186,6 @@
             android:textColor="#7B66F0"
             android:textStyle="bold"
             android:textSize="15dp"
-            android:enabled="false"
-            android:clickable="false"
             android:id="@+id/Insurance"/>
 
         <ImageButton
@@ -199,7 +195,7 @@
             android:layout_below="@id/Insurance"
             android:id="@+id/imgInsurance"/>
 
-        <CheckBox
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imgPNP"
@@ -210,8 +206,6 @@
             android:textColor="#7B66F0"
             android:textStyle="bold"
             android:textSize="15dp"
-            android:enabled="false"
-            android:clickable="false"
             android:id="@+id/OR"/>
 
         <ImageButton
@@ -222,7 +216,7 @@
             android:layout_marginLeft="80dp"
             android:id="@+id/imgOR"/>
 
-        <CheckBox
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imgInsurance"
@@ -231,8 +225,6 @@
             android:textColor="#7B66F0"
             android:textStyle="bold"
             android:textSize="15dp"
-            android:enabled="false"
-            android:clickable="false"
             android:id="@+id/CR"/>
 
         <ImageButton
