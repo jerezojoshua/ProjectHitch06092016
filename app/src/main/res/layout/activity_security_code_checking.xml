@@ -29,31 +29,67 @@
             android:textAlignment="center"
             android:textSize="15dp"
             android:textColor="@color/gray"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             android:text="@string/enter_code"/>
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/input_username"
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+            <TextView
+                android:id="@+id/TimeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/time_label"/>
+            <TextView
+                android:id="@+id/TimeLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/TimeLabel"
+                android:layout_marginBottom="10dp"/>
+        </RelativeLayout>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/Code"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/Code"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:singleLine="true"
-                android:layout_alignParentLeft="true"
-                android:drawableLeft="@drawable/passwordlogo"
-                android:drawablePadding="10dp"
-                android:hint="@string/security"
-                android:paddingLeft="10dp"
-                android:background="@color/white"/>
-        </android.support.design.widget.TextInputLayout>
-        <Button
-            android:id="@+id/SubmitCode"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:textSize="20dp"
-            android:text="@string/submit"
-            android:background="@drawable/loginbtn" />
+            android:layout_height="45dp"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:layout_alignParentLeft="true"
+            android:drawableLeft="@drawable/passwordlogo"
+            android:drawablePadding="10dp"
+            android:hint="@string/security"
+            android:paddingLeft="10dp"
+            android:background="@color/white"/>
+    </android.support.design.widget.TextInputLayout>
+        <TextView
+            android:id="@+id/SecurityCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            android:visibility="invisible"/>
+    <Button
+        android:id="@+id/SubmitCode"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
+        android:text="@string/confirm_btn"
+        android:background="@drawable/loginbtn" />
     </LinearLayout>
 </ScrollView>
