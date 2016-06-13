@@ -28,8 +28,6 @@
     <string name="PhoneNum">Phone Number</string>
     <string name="Next">NEXT</string>
 
-    <string name="facebook_app_id">503203266554684</string>
-    <string name="fb_login_protocol_scheme">fb503203266554684</string>
     <!-- Login strings -->
     <string name="angkas">ngkas</string>
     <string name="email_label">Email Address</string>
@@ -267,4 +265,12 @@
     <!--Security Code page strings -->
     <string name="security">Security Code</string>
     <string name="action_home">Home</string>
+
+    <string name="new_pass">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="confirm_btn">CONFIRM</string>
+    <string name="time_label">REMAINING TIME: </string>
+
+    <string name="fb_login_protocol_scheme">fb503203266554684</string>
+    <string name="facebook_app_id">1359802360713452</string>
 </resources>
