@@ -1,12 +1,15 @@
 package com.example.jivenlanstabien.projecthitch1;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -17,10 +20,20 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
 
 public class AddSchedule extends AppCompatActivity {
 
@@ -29,7 +42,7 @@ public class AddSchedule extends AppCompatActivity {
     CheckBox cbx;
     Button btnAddSched;
     EditText etPickUp, etDropOff, etTime, etNoDays, etNoWeeks;
-    Spinner spnPreference, spnLuggage;
+    Spinner spnPreference, etLuggage;
     TextView tvScheduleID, tvDriverID, tvVehicleID;
     RadioButton rbPattern;
     RadioGroup rbGroup;
@@ -38,24 +51,23 @@ public class AddSchedule extends AppCompatActivity {
     String scheduleid, driverid, vehicleid, pickup, dropoff, date, time, preference, luggage, nodays, enddateD, noweeks,
             enddateW, monday, tuesday, wednesday, thursday, friday, saturday, sunday, pattern, seat1, seat2, seat3, seat4, seat5
             , seat6, seat7;
-    String trSeat1,trSeat2,trSeat3,trSeat4,trSeat5,trSeat6,trSeat7;
+    String trSeat1,trSeat2,trSeat3,trSeat4,trSeat5,trSeat6,trSeat7,recurrence_stat, recurDaily_stat, recurWeekly_stat;
 
     DatePicker datePicker;
-    Calendar c;
+    Calendar c, new_c;
     Button datePick, endPickWeek, endPickDay;
     EditText timePick;
-    int mYear, mMonth, mDay, mHour, mMinute;
-    SharedPreferences sharedPreferences;
-    String getdriverid;
+    int mYear, mMonth, mDay, mHour, mMinute, day1, day2, day3, day4, day5, day6, day7, noOfCheckedDays, countCheckedDays, countWeeks, dayStatCounter;
+    SharedPreferences sharedPreferences1;
+    String driveridgetter, driveridget;
+
+    SimpleDateFormat sdf;
+    ArrayList<Integer> checkedDaysList = new ArrayList<Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_add_schedule);
-
-        sharedPreferences = getSharedPreferences("driver", MODE_PRIVATE);
-        getdriverid = sharedPreferences.getString("driverid", "");
 
         c = Calendar.getInstance();
         mYear = c.get(Calendar.YEAR);
@@ -69,17 +81,16 @@ public class AddSchedule extends AppCompatActivity {
         endPickDay = (Button) findViewById(R.id.endPickDay);
         endPickWeek = (Button) findViewById(R.id.endPickWeek);
         timePick = (EditText) findViewById(R.id.txtTime);
-
         tvScheduleID = (TextView) findViewById(R.id.txtScheduleID);
+
         tvDriverID = (TextView) findViewById(R.id.txtDriverID);
-        tvDriverID.setText(getdriverid);
         tvVehicleID = (TextView) findViewById(R.id.txtVehicleID);
         btnAddSched = (Button) findViewById(R.id.btnAdd);
 
         etPickUp = (EditText) findViewById(R.id.txtPickUp);
         etDropOff = (EditText) findViewById(R.id.txtDropOff);
         etTime = (EditText) findViewById(R.id.txtTime);
-        spnLuggage = (Spinner) findViewById(R.id.luggage_provision);
+        etLuggage = (Spinner) findViewById(R.id.luggage_provision);
         etNoDays = (EditText) findViewById(R.id.txtNoDays);
         etNoWeeks = (EditText) findViewById(R.id.txtNoWeeks);
 
@@ -99,11 +110,16 @@ public class AddSchedule extends AppCompatActivity {
         cbSeat2 = (CheckBox) findViewById(R.id.Seat2);
         cbSeat3 = (CheckBox) findViewById(R.id.Seat3);
         cbSeat4 = (CheckBox) findViewById(R.id.Seat4);
-        /*cbSeat5 = (CheckBox) findViewById(R.id.Seat5);
-        cbSeat6 = (CheckBox) findViewById(R.id.Seat6);
-        cbSeat7 = (CheckBox) findViewById(R.id.Seat7);*/
 
         cbx = (CheckBox)findViewById(R.id.expandableButton1);
+        recurrence_stat = "true";
+        recurDaily_stat = "false";
+        recurWeekly_stat = "true";
+
+        sdf = new SimpleDateFormat("yyyy-MM-dd");
+        new_c = Calendar.getInstance();
+        noOfCheckedDays = 0;
+        dayStatCounter = 0;
 
         etNoDays.addTextChangedListener(new TextWatcher() {
             @Override
@@ -181,6 +197,50 @@ public class AddSchedule extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
             }
         });
+
+        getTrips();
+    }
+
+    private void getTrips(){
+        class GetTrips extends AsyncTask<Void,Void,String> {
+            ProgressDialog loading;
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(AddSchedule.this,"Fetching...","Wait...",false,false);
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+                showTrips(s);
+            }
+
+            @Override
+            protected String doInBackground(Void... params) {
+                RequestHandler rh = new RequestHandler();
+                SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+                String email_login = sharedPreferences.getString("email_login", "");
+                String s = rh.sendGetRequestParam(DriverConfig.URL_GET_LOGINID,email_login);
+                return s;
+            }
+        }
+        GetTrips ge = new GetTrips();
+        ge.execute();
+    }
+    private void showTrips(String json){
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            JSONArray result = jsonObject.getJSONArray(DriverConfig.TAG_TR_JSON_ARRAY);
+            JSONObject c = result.getJSONObject(0);
+            String driveridgetter = c.getString(DriverConfig.TAG_USER_DRIVERID);
+
+            tvDriverID.setText(driveridgetter);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setDate(View v) {
@@ -209,6 +269,7 @@ public class AddSchedule extends AppCompatActivity {
             dpd.show();
         }
     }
+
     public void setEndDay(View v) {
 
         if (v == endPickDay) {
@@ -235,6 +296,7 @@ public class AddSchedule extends AppCompatActivity {
             dpd.show();
         }
     }
+
     public void setEndWeek(View v) {
 
         if (v == endPickWeek) {
@@ -261,6 +323,7 @@ public class AddSchedule extends AppCompatActivity {
             dpd.show();
         }
     }
+
     public void setTime(View v) {
         if (v == timePick) {
 
@@ -282,16 +345,21 @@ public class AddSchedule extends AppCompatActivity {
             tpd.show();
         }
     }
+
     public void expandableButton1(View view) {
         expandableLayout1 = (ExpandableRelativeLayout) findViewById(R.id.expandableLayout1);
 
         if(cbx.isChecked())
         {
             expandableLayout1.expand(); // toggle expand and collapse
+            recurrence_stat = "true";
+            Toast.makeText(AddSchedule.this, recurrence_stat, Toast.LENGTH_LONG).show();
         }
         else
         {
             expandableLayout1.collapse();
+            recurrence_stat = "false";
+            Toast.makeText(AddSchedule.this, recurrence_stat, Toast.LENGTH_LONG).show();
             cbMonday.setChecked(false);
             cbTuesday.setChecked(false);
             cbWednesday.setChecked(false);
@@ -303,6 +371,7 @@ public class AddSchedule extends AppCompatActivity {
             etNoWeeks.setText("");
         }
     }
+
     public void RecurDaily(View view){
 
         rb2 = (RadioButton) findViewById(R.id.radioWeekly);
@@ -339,7 +408,13 @@ public class AddSchedule extends AppCompatActivity {
         cbSunday = (CheckBox) findViewById(R.id.sunday);
         cbSunday.setEnabled(false);
 
+        recurDaily_stat = "true";
+        recurWeekly_stat = "false";
+
+//        Toast.makeText(AddSchedule.this, "RECURDAILY = "+recurDaily_stat+" / RECURWEEKLY = "+recurWeekly_stat, Toast.LENGTH_LONG).show();
+
     }
+
     public void RecurWeekly(View view){
 
         rb1 = (RadioButton) findViewById(R.id.radioDaily);
@@ -369,12 +444,16 @@ public class AddSchedule extends AppCompatActivity {
         cbSunday = (CheckBox) findViewById(R.id.sunday);
         cbSunday.setEnabled(true);
 
+        recurWeekly_stat = "true";
+        recurDaily_stat = "false";
+
+//        Toast.makeText(AddSchedule.this, "RECURWEEKLY = "+recurWeekly_stat+" / RECURDAILY = "+recurDaily_stat, Toast.LENGTH_LONG).show();
     }
+
     public void clickAddSched(View v) {
-        sharedPreferences = getSharedPreferences("driver", MODE_PRIVATE);
-        getdriverid = sharedPreferences.getString("driverid", "");
+
         scheduleid = tvScheduleID.getText().toString();
-        driverid = getdriverid;
+        driverid = tvDriverID.getText().toString();
         vehicleid = tvVehicleID.getText().toString();
 
         pickup = etPickUp.getText().toString();
@@ -382,8 +461,8 @@ public class AddSchedule extends AppCompatActivity {
         date = datePick.getText().toString();
         time = timePick.getText().toString();
         preference = spnPreference.getSelectedItem().toString();
-        luggage = spnLuggage.getSelectedItem().toString();
-        nodays = etNoDays.toString();
+        luggage = etLuggage.getSelectedItem().toString();
+        nodays = etNoDays.getText().toString();
         enddateD = endPickDay.getText().toString();
         noweeks = etNoWeeks.getText().toString();
         enddateW = endPickWeek.getText().toString();
@@ -401,133 +480,369 @@ public class AddSchedule extends AppCompatActivity {
         if (cbSeat6.isChecked()) {seat6 = "yes";} else {seat6 = "no";}
         if (cbSeat7.isChecked()) {seat7 = "yes";} else {seat7 = "no";}*/
 
-        if (cbMonday.isChecked()) {monday = "yes";} else {monday = "no";}
-        if (cbTuesday.isChecked()) {tuesday = "yes";} else {tuesday = "no";}
-        if (cbWednesday.isChecked()) {wednesday = "yes";} else {wednesday = "no";}
-        if (cbThursday.isChecked()) {thursday = "yes";} else {thursday = "no";}
-        if (cbFriday.isChecked()) {friday = "yes";} else {friday = "no";}
-        if (cbSaturday.isChecked()) {saturday = "yes";} else {saturday = "no";}
-        if (cbSunday.isChecked()) {sunday = "yes";} else {sunday = "no";}
+        if (cbSunday.isChecked()) {sunday = "yes";  noOfCheckedDays++; checkedDaysList.add(1);} else {sunday = "no";}
+        if (cbMonday.isChecked()) {monday = "yes"; noOfCheckedDays++; checkedDaysList.add(2);} else {monday = "no";}
+        if (cbTuesday.isChecked()) {tuesday = "yes"; noOfCheckedDays++; checkedDaysList.add(3);} else {tuesday = "no";}
+        if (cbWednesday.isChecked()) {wednesday = "yes"; noOfCheckedDays++; checkedDaysList.add(4);} else {wednesday = "no";}
+        if (cbThursday.isChecked()) {thursday = "yes";  noOfCheckedDays++; checkedDaysList.add(5);} else {thursday = "no";}
+        if (cbFriday.isChecked()) {friday = "yes"; noOfCheckedDays++; checkedDaysList.add(6);} else {friday = "no";}
+        if (cbSaturday.isChecked()) {saturday = "yes"; noOfCheckedDays++; checkedDaysList.add(7);} else {saturday = "no";}
 
         String schedAddMethod = "addSchedule";
-        DriverBackgroundTask backgroundTask = new DriverBackgroundTask(this.getApplicationContext());
-        backgroundTask.execute(schedAddMethod,scheduleid,driverid,vehicleid,pickup,dropoff,date,time,preference,luggage,pattern,
-                monday,tuesday,wednesday,thursday,friday,saturday,sunday,noweeks,enddateW,seat1,seat2,seat3,seat4/*,seat5,seat6,seat7*/);
+        if(recurrence_stat.equals("true"))
+        {
+            if(recurDaily_stat.equals("true"))
+            {
+                DriverBackgroundTask backgroundTask = new DriverBackgroundTask(this.getApplicationContext());
+                backgroundTask.execute(schedAddMethod, scheduleid, driverid, vehicleid, pickup, dropoff, date, time, preference, luggage, pattern,
+                        monday, tuesday, wednesday, thursday, friday, saturday, sunday, nodays, enddateD, seat1, seat2, seat3, seat4/*,seat5,seat6,seat7*/);
 
-        addTrips();
+                addTripsRecurDaily();
+            }
+            else
+            {
+                DriverBackgroundTask backgroundTask = new DriverBackgroundTask(this.getApplicationContext());
+                backgroundTask.execute(schedAddMethod,scheduleid,driverid,vehicleid,pickup,dropoff,date,time,preference,luggage,pattern,
+                        monday,tuesday,wednesday,thursday,friday,saturday,sunday,noweeks,enddateW,seat1,seat2,seat3,seat4/*,seat5,seat6,seat7*/);
+
+                addTripsWeekly();
+            }
+        }
+        else
+        {
+            DriverBackgroundTask backgroundTask = new DriverBackgroundTask(this.getApplicationContext());
+            backgroundTask.execute(schedAddMethod,scheduleid,driverid,vehicleid,pickup,dropoff,date,time,preference,luggage,pattern,
+                    monday,tuesday,wednesday,thursday,friday,saturday,sunday,noweeks,enddateW,seat1,seat2,seat3,seat4/*,seat5,seat6,seat7*/);
+
+            addTrips();
+        }
         finish();
     }
 
     public void addTrips(){
-        sharedPreferences = getSharedPreferences("driver", MODE_PRIVATE);
-        getdriverid = sharedPreferences.getString("driverid", "");
-        if (cbMonday.isChecked()) {
-            if (seat1.equals("yes")) {trSeat1 = "Available";} else {trSeat1 = "Not Available";}
-            if (seat2.equals("yes")) {trSeat2 = "Available";} else {trSeat2 = "Not Available";}
-            if (seat3.equals("yes")) {trSeat3 = "Available";} else {trSeat3 = "Not Available";}
-            if (seat4.equals("yes")) {trSeat4 = "Available";} else {trSeat4 = "Not Available";}
-            String tripAddMethod = "addTrips";
-            TripTask tripTask = new TripTask(this.getApplicationContext());
-            tripTask.execute(tripAddMethod,"null",scheduleid,getdriverid,vehicleid,pickup,dropoff,date,time,
-                    trSeat1,"null",trSeat2,"null",trSeat3,"null",trSeat4,"null","Open");
-        } else {
-            monday = "no";
+        String tripAddMethod = "addTrips";
+        TripTask tripTask = new TripTask(this.getApplicationContext());
+        tripTask.execute(tripAddMethod, "null", scheduleid, driverid, vehicleid, pickup, dropoff, date, time,
+                seat1, "null", seat2, "null", seat3, "null", seat4, "null",/*trSeat5,"null",trSeat6,"null",trSeat7,"null",*/"Open");
+    }
+
+    public void addTripsRecurDaily()
+    {
+        String tripAddMethod = "addTrips";
+        String dt = date,new_date, from_date = date, to_date = enddateD;
+        int diffDays;
+
+        if (nodays.length() != 0)
+        {
+            for (int counter = 1; counter <= Integer.parseInt(nodays); counter++) {
+                try {
+                    c.setTime(sdf.parse(dt));
+                } catch (ParseException e) {
+                }
+                c.add(Calendar.DATE, 1);
+                dt = sdf.format(c.getTime());
+                try{
+                    new_c.setTime(sdf.parse(dt));
+                }catch(ParseException e){}
+                new_c.add(Calendar.DATE,-1);
+                new_date = sdf.format(new_c.getTime());
+                TripTask tripTask = new TripTask(this.getApplicationContext());
+                tripTask.execute(tripAddMethod, "null", scheduleid, driverid, vehicleid, pickup, dropoff, new_date, time,
+                        seat1, "null", seat2, "null", seat3, "null", seat4, "null",/*trSeat5,"null",trSeat6,"null",trSeat7,"null",*/"Open");
+            }
         }
-        if (cbTuesday.isChecked()) {
-            if (cbSeat1.isChecked()) {trSeat1 = "Available";} else {trSeat1 = "Not Available";}
-            if (cbSeat2.isChecked()) {trSeat2 = "Available";} else {trSeat2 = "Not Available";}
-            if (cbSeat3.isChecked()) {trSeat3 = "Available";} else {trSeat3 = "Not Available";}
-            if (cbSeat4.isChecked()) {trSeat4 = "Available";} else {trSeat4 = "Not Available";}
-            /*if (cbSeat5.isChecked()) {trSeat5 = "Available";} else {trSeat5 = "Not Available";}
-            if (cbSeat6.isChecked()) {trSeat6 = "Available";} else {trSeat6 = "Not Available";}
-            if (cbSeat7.isChecked()) {trSeat7 = "Available";} else {trSeat7 = "Not Available";}*/
-            String tripAddMethod = "addTrips";
-            TripTask tripTask = new TripTask(this.getApplicationContext());
-            tripTask.execute(tripAddMethod,"null",scheduleid,getdriverid,vehicleid,pickup,dropoff,date,time,
-                    trSeat1,"null",trSeat2,"null",trSeat3,"null",trSeat4,"null",/*trSeat5,"null",trSeat6,"null",trSeat7,"null",*/"Open");
-        } else {
-            tuesday = "no";
-        }
-        if (cbWednesday.isChecked()) {
-            if (cbSeat1.isChecked()) {trSeat1 = "Available";} else {trSeat1 = "Not Available";}
-            if (cbSeat2.isChecked()) {trSeat2 = "Available";} else {trSeat2 = "Not Available";}
-            if (cbSeat3.isChecked()) {trSeat3 = "Available";} else {trSeat3 = "Not Available";}
-            if (cbSeat4.isChecked()) {trSeat4 = "Available";} else {trSeat4 = "Not Available";}
-            /*if (cbSeat5.isChecked()) {trSeat5 = "Available";} else {trSeat5 = "Not Available";}
-            if (cbSeat6.isChecked()) {trSeat6 = "Available";} else {trSeat6 = "Not Available";}
-            if (cbSeat7.isChecked()) {trSeat7 = "Available";} else {trSeat7 = "Not Available";}*/
-            String tripAddMethod = "addTrips";
-            TripTask tripTask = new TripTask(this.getApplicationContext());
-            tripTask.execute(tripAddMethod,"null",scheduleid,getdriverid,vehicleid,pickup,dropoff,date,time,
-                    trSeat1,"null",trSeat2,"null",trSeat3,"null",trSeat4,"null",/*trSeat5,"null",trSeat6,"null",trSeat7,"null",*/"Open");
-        } else {
-            wednesday = "no";
-        }
-        if (cbThursday.isChecked()) {
-            if (cbSeat1.isChecked()) {trSeat1 = "Available";} else {trSeat1 = "Not Available";}
-            if (cbSeat2.isChecked()) {trSeat2 = "Available";} else {trSeat2 = "Not Available";}
-            if (cbSeat3.isChecked()) {trSeat3 = "Available";} else {trSeat3 = "Not Available";}
-            if (cbSeat4.isChecked()) {trSeat4 = "Available";} else {trSeat4 = "Not Available";}
-            /*if (cbSeat5.isChecked()) {trSeat5 = "Available";} else {trSeat5 = "Not Available";}
-            if (cbSeat6.isChecked()) {trSeat6 = "Available";} else {trSeat6 = "Not Available";}
-            if (cbSeat7.isChecked()) {trSeat7 = "Available";} else {trSeat7 = "Not Available";}*/
-            String tripAddMethod = "addTrips";
-            TripTask tripTask = new TripTask(this.getApplicationContext());
-            tripTask.execute(tripAddMethod,"null",scheduleid,driverid,vehicleid,pickup,dropoff,date,time,
-                    trSeat1,"null",trSeat2,"null",trSeat3,"null",trSeat4,"null",/*trSeat5,"null",trSeat6,"null",trSeat7,"null",*/"Open");
-        } else {
-            thursday = "no";
-        }
-        if (cbFriday.isChecked()) {
-            if (cbSeat1.isChecked()) {trSeat1 = "Available";} else {trSeat1 = "Not Available";}
-            if (cbSeat2.isChecked()) {trSeat2 = "Available";} else {trSeat2 = "Not Available";}
-            if (cbSeat3.isChecked()) {trSeat3 = "Available";} else {trSeat3 = "Not Available";}
-            if (cbSeat4.isChecked()) {trSeat4 = "Available";} else {trSeat4 = "Not Available";}
-            /*if (cbSeat5.isChecked()) {trSeat5 = "Available";} else {trSeat5 = "Not Available";}
-            if (cbSeat6.isChecked()) {trSeat6 = "Available";} else {trSeat6 = "Not Available";}
-            if (cbSeat7.isChecked()) {trSeat7 = "Available";} else {trSeat7 = "Not Available";}*/
-            String tripAddMethod = "addTrips";
-            TripTask tripTask = new TripTask(this.getApplicationContext());
-            tripTask.execute(tripAddMethod,"null",scheduleid,driverid,vehicleid,pickup,dropoff,date,time,
-                    trSeat1,"null",trSeat2,"null",trSeat3,"null",trSeat4,"null",/*trSeat5,"null",trSeat6,"null",trSeat7,"null",*/"Open");
-        } else {
-            friday = "no";
-        }
-        if (cbSaturday.isChecked()) {
-            if (cbSeat1.isChecked()) {trSeat1 = "Available";} else {trSeat1 = "Not Available";}
-            if (cbSeat2.isChecked()) {trSeat2 = "Available";} else {trSeat2 = "Not Available";}
-            if (cbSeat3.isChecked()) {trSeat3 = "Available";} else {trSeat3 = "Not Available";}
-            if (cbSeat4.isChecked()) {trSeat4 = "Available";} else {trSeat4 = "Not Available";}
-            /*if (cbSeat5.isChecked()) {trSeat5 = "Available";} else {trSeat5 = "Not Available";}
-            if (cbSeat6.isChecked()) {trSeat6 = "Available";} else {trSeat6 = "Not Available";}
-            if (cbSeat7.isChecked()) {trSeat7 = "Available";} else {trSeat7 = "Not Available";}*/
-            String tripAddMethod = "addTrips";
-            TripTask tripTask = new TripTask(this.getApplicationContext());
-            tripTask.execute(tripAddMethod,"null",scheduleid,driverid,vehicleid,pickup,dropoff,date,time,
-                    trSeat1,"null",trSeat2,"null",trSeat3,"null",trSeat4,"null",/*trSeat5,"null",trSeat6,"null",trSeat7,"null",*/"Open");
-        } else {
-            saturday = "no";
-        }
-        if (cbSunday.isChecked()) {
-            if (cbSeat1.isChecked()) {trSeat1 = "Available";} else {trSeat1 = "Not Available";}
-            if (cbSeat2.isChecked()) {trSeat2 = "Available";} else {trSeat2 = "Not Available";}
-            if (cbSeat3.isChecked()) {trSeat3 = "Available";} else {trSeat3 = "Not Available";}
-            if (cbSeat4.isChecked()) {trSeat4 = "Available";} else {trSeat4 = "Not Available";}
-            /*if (cbSeat5.isChecked()) {trSeat5 = "Available";} else {trSeat5 = "Not Available";}
-            if (cbSeat6.isChecked()) {trSeat6 = "Available";} else {trSeat6 = "Not Available";}
-            if (cbSeat7.isChecked()) {trSeat7 = "Available";} else {trSeat7 = "Not Available";}*/
-            String tripAddMethod = "addTrips";
-            TripTask tripTask = new TripTask(this.getApplicationContext());
-            tripTask.execute(tripAddMethod,"null",scheduleid,driverid,vehicleid,pickup,dropoff,date,time,
-                    trSeat1,"null",trSeat2,"null",trSeat3,"null",trSeat4,"null",/*trSeat5,"null",trSeat6,"null",trSeat7,"null",*/"Open");
-        } else {
-            sunday = "no";
+        else
+        {
+            try{
+                c.setTime(sdf.parse(from_date));
+                new_c.setTime(sdf.parse(to_date));
+            }catch(ParseException e){}
+
+            long millis1 = c.getTimeInMillis();
+            long millis2 = new_c.getTimeInMillis();
+            long diffmillis = millis2 - millis1;
+
+            long diffdays = (diffmillis / (24 * 60 * 60 * 1000)) + 1;
+
+            for (int counter = 1; counter <= (int)(long) diffdays; counter++) {
+                try {
+                    c.setTime(sdf.parse(dt));
+                } catch (ParseException e) {
+                }
+                c.add(Calendar.DATE, 1);
+                dt = sdf.format(c.getTime());
+                try{
+                    new_c.setTime(sdf.parse(dt));
+                }catch(ParseException e){}
+                new_c.add(Calendar.DATE,-1);
+                new_date = sdf.format(new_c.getTime());
+                TripTask tripTask = new TripTask(this.getApplicationContext());
+                tripTask.execute(tripAddMethod, "null", scheduleid, driverid, vehicleid, pickup, dropoff, new_date, time,
+                        seat1, "null", seat2, "null", seat3, "null", seat4, "null",/*trSeat5,"null",trSeat6,"null",trSeat7,"null",*/"Open");
+            }
         }
     }
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        return true;
+
+    public void addTripsWeekly() {
+
+        String currentDate = date, new_date = "";
+        int dOfTheWeek = 0;
+        try {
+            c.setTime(sdf.parse(currentDate));
+        } catch (ParseException e) {
+        }
+        dOfTheWeek = c.get(Calendar.DAY_OF_WEEK);
+
+        if (hasBeenChecked(dOfTheWeek).equals("true")) {   //if start_date is part of the checked days
+            addTripsWeeklyMethod(dOfTheWeek, currentDate);
+        }
+        else
+        {
+            //if start date is not one of the checked days
+            String checkedStat = "true";
+            while(checkedStat.equals("true"))
+            {   //get how many days from the picked start day to the next checked day
+                dOfTheWeek++;
+                if(dOfTheWeek==7)
+                    dOfTheWeek = 1;
+                if(hasBeenChecked(dOfTheWeek).equals("true"))
+                {
+                    checkedStat = "false";
+                    dayStatCounter+=1;
+                }
+                else
+                    dayStatCounter+=1;
+            }
+
+            try {
+                c.setTime(sdf.parse(currentDate));
+            } catch (ParseException e) {}
+            c.add(Calendar.DATE, dayStatCounter);
+            dOfTheWeek = c.get(Calendar.DAY_OF_WEEK);
+            currentDate = sdf.format(c.getTime());
+            date = currentDate;
+            addTripsWeeklyMethod(dOfTheWeek, date);
+        }
+    }
+
+    public void addTripsWeeklyMethod(int day_of_the_week, String curr_Date)
+    {
+        int dayOfTheWeekMethod = day_of_the_week, num_of_weeks = 0, remainder = 0;
+        String current_date_method = curr_Date, original_start_date = date, end_date_weekly = enddateW;
+//        Log.d("ENTER HERE DAY OF THE WEEK AND CURRENT DATE", String.valueOf(dayOfTheWeek)+current_date);
+
+        if (noweeks.length()!=0) {   //if number of weeks is given
+            num_of_weeks = Integer.parseInt(noweeks);
+            addTripsWeeklyProcess(num_of_weeks,dayOfTheWeekMethod, remainder, current_date_method);
+        }
+        else
+        {
+            try{
+                c.setTime(sdf.parse(original_start_date));
+                new_c.setTime(sdf.parse(end_date_weekly));
+            }catch(ParseException e){}
+
+            long millis1 = c.getTimeInMillis();
+            long millis2 = new_c.getTimeInMillis();
+            long diffmillis = millis2 - millis1;
+
+            long diffdays = (diffmillis / (24 * 60 * 60 * 1000)) + 1;
+            num_of_weeks = (int)(long)diffdays/7;
+            remainder = (int)(long)diffdays-(7*num_of_weeks);
+
+//            Log.d("DATE DIFFERENCE WEEKLY: ", String.valueOf((int) (long) diffdays));
+//            Log.d("DATE NUM OF WEEKS AND REMAINDER : ", String.valueOf(num_of_weeks) + " " + String.valueOf(remainder));
+
+            addTripsWeeklyProcess(num_of_weeks, dayOfTheWeekMethod, remainder, current_date_method);
+        }
+    }
+
+    public void addTripsWeeklyProcess(int numWeeks, int day_of_the_week_from_method, int remainder_from_method, String current_date_from_method)
+    {
+        String tripAddMethod = "addTrips";
+        String current_date_process = current_date_from_method, original_start_date = date, end_date = enddateW;
+        int numOfWeeks = numWeeks, dayOfTheWeekProcess = day_of_the_week_from_method, valOfNextCheckedDay = 0, diffOfTheDays = 0, dayToAdd = 0, remainder = remainder_from_method;
+        for (countWeeks = 1; countWeeks <= numOfWeeks; countWeeks++) {   //loop by the number of weeks given
+            for (countCheckedDays = 1; countCheckedDays <= noOfCheckedDays; countCheckedDays++) {   //loop by the how many days are checked
+                int loop = 0;
+                try {
+                    c.setTime(sdf.parse(current_date_process));
+                } catch (ParseException e) {
+                }
+                dayOfTheWeekProcess = c.get(Calendar.DAY_OF_WEEK);
+
+                if (countCheckedDays != noOfCheckedDays || countCheckedDays!=1) {
+//                        Log.d("ENTER HERE WHILE COUNTER!=NO. OF CHECKED DAYS", "Hello World!");
+//                        Log.d("ENTER HERE VALUE OF COUNTER FOR CHECKED DAYS", String.valueOf(countCheckedDays));
+                    valOfNextCheckedDay = checkedDaysList.get(loop); //get the value of next checked day from the current day
+                    if(valOfNextCheckedDay!=dayOfTheWeekProcess || dayStatCounter>0)
+                    {
+                        while(dayOfTheWeekProcess!=checkedDaysList.get(loop))
+                        {
+//                                Log.d("ENTER HERE VALUE OF LOOP", String.valueOf(loop));
+                            if(loop==(noOfCheckedDays-1))
+                                loop = 0;
+                            else
+                                loop+=1;
+                        }
+//                            Log.d("ENTER HERE VALUE OF LOOP AFTER LOOP", String.valueOf(loop));
+                        valOfNextCheckedDay = checkedDaysList.get(loop); //get the value of next checked day from the current day
+                    }
+                    if (valOfNextCheckedDay == dayOfTheWeekProcess) {
+                        loop += 1;
+                        if (loop != checkedDaysList.size()) {
+                            valOfNextCheckedDay = checkedDaysList.get(loop);
+                        } else {
+                            loop = 0;
+                            valOfNextCheckedDay = checkedDaysList.get(loop);
+                        }
+                    }
+//                        Log.d("ENTER HERE VALUE OF NEXT CHECKED DAY AND DAY OF THE WEEK", String.valueOf(valOfNextCheckedDay) + String.valueOf(dayOfTheWeek));
+//                        Log.d("ENTER HERE VALUE OF VAL OF NEXT CHECKED", String.valueOf(valOfNextCheckedDay));
+                    diffOfTheDays = (valOfNextCheckedDay - dayOfTheWeekProcess); //get the days difference of current day with the next day
+                    if (!(diffOfTheDays > 0)) {diffOfTheDays += 7;}
+                }
+                if(countCheckedDays==1)
+                {
+                    dayToAdd = 7 * (countWeeks-1);
+                    current_date_process = addDays(original_start_date, dayToAdd);
+                    TripTask tripTask = new TripTask(this.getApplicationContext());
+                    tripTask.execute(tripAddMethod, "null", scheduleid, driverid, vehicleid, pickup, dropoff, current_date_process, time,
+                            seat1, "null", seat2, "null", seat3, "null", seat4, "null",/*trSeat5,"null",trSeat6,"null",trSeat7,"null",*/"Open");
+                }
+                else
+                {
+                    current_date_process = addDays(current_date_process, diffOfTheDays);
+                    TripTask tripTask = new TripTask(this.getApplicationContext());
+                    tripTask.execute(tripAddMethod, "null", scheduleid, driverid, vehicleid, pickup, dropoff, current_date_process, time,
+                            seat1, "null", seat2, "null", seat3, "null", seat4, "null",/*trSeat5,"null",trSeat6,"null",trSeat7,"null",*/"Open");
+                }
+            }
+        }
+        if(remainder>0)
+        {
+            String temp_current_date;
+            try{
+                c.setTime(sdf.parse(end_date));
+            }catch(ParseException e){}
+            end_date = sdf.format(c.getTime());
+            try {
+                c.setTime(sdf.parse(current_date_process));
+            } catch (ParseException e) {}
+            c.add(Calendar.DATE,1);
+            current_date_process = sdf.format(c.getTime());
+            while(!current_date_process.equals(end_date))
+            {
+                try {
+                    c.setTime(sdf.parse(current_date_process));
+                } catch (ParseException e) {
+                }
+                dayOfTheWeekProcess = c.get(Calendar.DAY_OF_WEEK);
+                if(hasBeenChecked(dayOfTheWeekProcess).equals("true"))
+                {
+                    temp_current_date = current_date_process;
+//                    Log.d("ENTER HERE VALUE OF NEW CURRENT DATE IN REMAINDER", temp_current_date);
+                    try {
+                        c.setTime(sdf.parse(current_date_process));
+                    } catch (ParseException e) {}
+                    c.add(Calendar.DATE,1);
+                    current_date_process = sdf.format(c.getTime());
+
+                    TripTask tripTask = new TripTask(this.getApplicationContext());
+                    tripTask.execute(tripAddMethod, "null", scheduleid, driverid, vehicleid, pickup, dropoff, temp_current_date, time,
+                            seat1, "null", seat2, "null", seat3, "null", seat4, "null",/*trSeat5,"null",trSeat6,"null",trSeat7,"null",*/"Open");
+                }
+                else
+                {
+                    try {
+                        c.setTime(sdf.parse(current_date_process));
+                    } catch (ParseException e) {}
+                    c.add(Calendar.DATE,1);
+                    current_date_process = sdf.format(c.getTime());
+                }
+
+            }
+            if(current_date_process.equals(end_date))
+            {
+                try {
+                    c.setTime(sdf.parse(current_date_process));
+                } catch (ParseException e) {
+                }
+                dayOfTheWeekProcess = c.get(Calendar.DAY_OF_WEEK);
+                if(hasBeenChecked(dayOfTheWeekProcess).equals("true"))
+                {
+//                    Log.d("ENTER HERE VALUE OF NEW CURRENT DATE WHEN CURRENT DATE == END DATE", current_date_process);
+                    TripTask tripTask = new TripTask(this.getApplicationContext());
+                    tripTask.execute(tripAddMethod, "null", scheduleid, driverid, vehicleid, pickup, dropoff, current_date_process, time,
+                            seat1, "null", seat2, "null", seat3, "null", seat4, "null",/*trSeat5,"null",trSeat6,"null",trSeat7,"null",*/"Open");
+                }
+            }
+        }
+    }
+
+    public String addDays(String currentDate, int dateDiff)
+    {
+        String current_start = "";
+        current_start = currentDate;
+        int dateDifference = dateDiff;
+        try {
+            c.setTime(sdf.parse(current_start));
+        } catch (ParseException e) {}
+        c.add(Calendar.DATE,dateDifference);
+        current_start = sdf.format(c.getTime());
+//        Log.d("ENTER HERE VALUE OF NEW CURRENT DATE", current_start);
+        return current_start;
+    }
+
+    public String hasBeenChecked(int dWeek) {
+        int day_of_the_week = dWeek;
+        String stat ="";
+        switch (day_of_the_week)
+        {
+            case 1:
+                if(sunday.equals("yes"))
+                    stat = "true";
+                else
+                    stat = "false";
+                break;
+            case 2:
+                if(monday.equals("yes"))
+                    stat = "true";
+                else
+                    stat = "false";
+                break;
+            case 3:
+                if(tuesday.equals("yes"))
+                    stat = "true";
+                else
+                    stat = "false";
+                break;
+            case 4:
+                if(wednesday.equals("yes"))
+                    stat = "true";
+                else
+                    stat = "false";
+                break;
+            case 5:
+                if(thursday.equals("yes"))
+                    stat = "true";
+                else
+                    stat = "false";
+                break;
+            case 6:
+                if(friday.equals("yes"))
+                    stat = "true";
+                else
+                    stat = "false";
+                break;
+            case 7:
+                if(saturday.equals("yes"))
+                    stat = "true";
+                else
+                    stat = "false";
+                break;
+        }
+        return stat;
     }
 }
 

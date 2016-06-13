@@ -17,6 +17,7 @@ public class DriverConfig {
     public static final String URL_UPDATE_DRPROFILE = "http://angkas.net23.net/updateDrProfile.php";
     public static final String URL_GET_USERINFO = "http://angkas.net23.net/getuser.php?loginid=";
     public static final String URL_GET_PASSENGERINFO = "http://angkas.net23.net/getpassengerinfo2.php?passengerid=";
+    public static final String URL_GET_LOGINID = "http://angkas.net23.net/getDriverID.php?loginid=";
 
     public static final String URL_UPDATE_SEAT1 = "http://angkas.net23.net/updateSeat1.php";
     public static final String URL_UPDATE_SEAT2 = "http://angkas.net23.net/updateSeat2.php";
