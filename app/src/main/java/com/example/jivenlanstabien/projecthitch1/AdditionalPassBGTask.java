@@ -16,7 +16,8 @@ import java.net.URLEncoder;
 
 /**
  * Created by Eugene on 6/1/2016.
- *///
+ */
+//JOSHUA
 public class AdditionalPassBGTask extends AsyncTask<String,Void,String> {
     Context ctx;
 

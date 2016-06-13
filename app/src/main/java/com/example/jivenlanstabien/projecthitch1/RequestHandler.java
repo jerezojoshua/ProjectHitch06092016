@@ -17,7 +17,7 @@ import javax.net.ssl.HttpsURLConnection;
 /**
  * Created by Belal on 10/24/2015.
  */
-
+    
 public class RequestHandler {
 
     //Method to send httpPostRequest
@@ -30,7 +30,7 @@ public class RequestHandler {
         URL url;
 
         //StringBuilder object to store the message retrieved from the server
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb     = new StringBuilder();
         try {
             //Initializing Url
             url = new URL(requestURL);
@@ -96,6 +96,23 @@ public class RequestHandler {
         StringBuilder sb =new StringBuilder();
         try {
             URL url = new URL(requestURL+id);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+            String s;
+            while((s=bufferedReader.readLine())!=null){
+                sb.append(s+"\n");
+            }
+        }catch(Exception e){
+        }
+        return sb.toString();
+    }
+
+    public String send2GetRequestParam(String requestURL, String id1,String id2)
+    {
+        StringBuilder sb =new StringBuilder();
+        try {
+            URL url = new URL(requestURL+id1+id2);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
 

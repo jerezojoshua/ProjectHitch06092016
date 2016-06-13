@@ -124,7 +124,8 @@
             android:textStyle="bold"
             android:textSize="14sp"
             android:layout_below="@+id/pickupdropoff"
-            android:id="@+id/datetime" />
+            android:id="@+id/datetime"
+            />
 
         <TextView
             android:layout_marginLeft="5dp"
